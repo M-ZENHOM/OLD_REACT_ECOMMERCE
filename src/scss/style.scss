@@ -1,0 +1,933 @@
+@use "./components/layout";
+@use "./components/mixins" as *;
+@use "./components/config" as *;
+@use "./components/pages/Header.scss";
+@use "./components/pages/Footer.scss";
+
+.img-container {
+  position: relative;
+  img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+  }
+  .short-description {
+    @include postion;
+    text-align: center;
+    h2 {
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+      max-width: 500px;
+      @include breakpoints(mobile) {
+        width: 300px;
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+    }
+    .shopBtn {
+      background-color: $side-color;
+      padding: 10px 30px;
+      border-radius: 25px;
+      color: #fff;
+      text-transform: uppercase;
+      transition: $trans;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.774);
+        color: $side-color;
+        border: 1px solid $side-color;
+      }
+    }
+  }
+}
+
+.heading-box {
+  @include flex(column, center, center);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-transform: uppercase;
+  .heading-show {
+    margin-left: 40px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: #000;
+      width: 50%;
+      height: 1px;
+      top: 50%;
+      left: -60%;
+    }
+  }
+  .heading-title {
+    font: {
+      size: 40px;
+      weight: 600;
+    }
+    color: $text-color;
+  }
+}
+
+.about-container {
+  position: relative;
+  background-color: $header-color;
+  height: 500px;
+  transition: $trans;
+  .shapeOne {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    transition: $trans;
+  }
+  .shapeTwo {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    transition: $trans;
+  }
+  .shapeThree {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transition: $trans;
+  }
+  .texts {
+    @include postion;
+    width: 450px;
+    font-size: 20px;
+    color: $text-color;
+    transition: $trans;
+    span {
+      font-weight: bold;
+    }
+  }
+  @include breakpoints(mobile) {
+    .shapeOne {
+      top: 75px;
+      left: 0;
+      width: 35%;
+    }
+    .shapeTwo {
+      top: 75px;
+      right: 0;
+      width: 35%;
+    }
+    .shapeThree {
+      top: 460px;
+      right: 0;
+      width: 60%;
+    }
+    .texts {
+      padding-top: 100px;
+      width: 350px;
+      text-align: center;
+    }
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  place-items: center;
+  gap: 20px;
+  padding-bottom: 50px;
+  .productCard {
+    position: relative;
+    width: 18rem;
+    img {
+      width: 260px;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .detailsBtn {
+      outline: none;
+      border: none;
+      background-color: $side-color;
+      display: block;
+      width: 90.4%;
+      height: 40px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      text-transform: uppercase;
+      transition: $trans;
+      &:hover {
+        background-color: $text-color;
+        border: 1px solid $side-color;
+      }
+    }
+    .productCard-images {
+      @include flex(row, flex-start, center);
+      img {
+        margin-top: 20px;
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .productCard-body {
+      .productCard-title {
+        margin-top: 15px;
+        font-weight: 500;
+        color: $text-color;
+      }
+      .productCard-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.ourStory {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+  background-color: $side-color;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  transition: $trans;
+  .text-story {
+    h2 {
+      font-weight: bold;
+    }
+    span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    p {
+      width: 450px;
+      font-size: 18px;
+    }
+    button {
+      background-color: $text-color;
+      color: #fff;
+      padding: 10px 50px;
+      margin-top: 10px;
+      border-radius: 20px;
+      text-align: center;
+      transition: $trans;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.774);
+        color: $side-color;
+      }
+    }
+  }
+  .story-box {
+    margin-left: 100px;
+    transition: $trans;
+    .sBox {
+      transition: $trans;
+      @include flex(row, center, center);
+      i {
+        font-size: 80px;
+      }
+      .text {
+        margin-left: 30px;
+        p {
+          width: 200px;
+        }
+      }
+    }
+  }
+  @include breakpoints(mobile) {
+    .text-story {
+      p {
+        width: 300px;
+      }
+    }
+    .story-box {
+      margin: 0;
+      margin-top: 50px;
+      // text-align: center;
+      .sBox {
+        @include flex(column, flex-start, flex-start);
+        .text {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.sub-mail {
+  @include flex(row, space-evenly, center);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  transition: $trans;
+  h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .sub-input {
+    input {
+      width: 350px;
+      outline: none;
+      border: none;
+      border: 1px solid $text-color;
+      padding: 10px;
+    }
+    button {
+      margin-left: 40px;
+      background-color: $text-color;
+      color: #fff;
+      padding: 10px 50px;
+      text-align: center;
+      transition: $trans;
+      &:hover {
+        background-color: $side-color;
+        color: #fff;
+      }
+    }
+  }
+  @include breakpoints(mobile) {
+    & {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        margin-bottom: 20px;
+      }
+      .sub-input {
+        input {
+          display: flex;
+          width: 250px;
+        }
+        button {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+.insta-peek {
+  @include flex(column, center, center);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  .insta-heading {
+    @include flex(row, center, center);
+    h2 {
+      margin-right: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    a {
+      color: $text-color;
+      text-transform: uppercase;
+      font-size: 18px;
+      margin-bottom: 12px;
+      border: 1px solid $text-color;
+      padding: 6px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: $trans;
+      &:hover {
+        color: $side-color;
+        border-color: $side-color;
+      }
+    }
+  }
+  .insta-imgs {
+    margin-top: 50px;
+    &:hover .overlay {
+      opacity: 1;
+    }
+    .overlay {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 1200px;
+      height: 400px;
+      z-index: 55;
+      cursor: pointer;
+      opacity: 0;
+      transition: $trans;
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 30px;
+      }
+    }
+    img {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      z-index: 54;
+    }
+    @include breakpoints(mobile) {
+      & {
+        img {
+          width: 100%;
+        }
+        .overlay {
+          width: 100%;
+          height: 1200px;
+        }
+      }
+    }
+  }
+}
+.allProducts {
+  .img-container {
+    img {
+      height: 40vh;
+    }
+  }
+  .container {
+    padding-top: 100px;
+  }
+  .catsContainer {
+    position: relative;
+    z-index: 100;
+    @include postion;
+    top: 650px;
+    left: 50%;
+    transform: translateX(-40%);
+    width: 300px;
+    max-width: 100%;
+    @include breakpoints(mobile) {
+      top: 500px;
+    }
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      i {
+        font-weight: bold;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    }
+    ul {
+      display: none;
+      opacity: 0;
+      position: absolute;
+      left: 5px;
+      top: 30px;
+      background-color: $text-color;
+      color: #fff;
+      width: 250px;
+      height: fit-content;
+      padding: 10px;
+      transition: $trans;
+      &.showList {
+        display: block;
+        opacity: 1;
+      }
+      li {
+        padding: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #fff;
+        &:hover {
+          background-color: $side-color;
+        }
+      }
+    }
+  }
+}
+
+.details-box {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 150px;
+  height: fit-content;
+  @include flex(row, center, flex-start);
+  transition: $trans;
+  .box-imgs {
+    position: absolute;
+    left: 535px;
+    bottom: 50px;
+    @include flex(row, center, flex-start);
+    img {
+      width: 160px;
+      height: 90px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+  .box-body {
+    margin-left: 20px;
+    h3 {
+      font-weight: bold;
+    }
+    p {
+      width: 300px;
+    }
+    .box-footer {
+      span {
+        font-size: 18px;
+      }
+      .price {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      @include flex(column, center, flex-start);
+      .item-rating {
+        i {
+          margin-left: 5px;
+          color: orange;
+        }
+      }
+    }
+  }
+  button {
+    margin-top: 20px;
+    background-color: $side-color;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 25px;
+    transition: $trans;
+    border: 1px solid $side-color;
+    &:hover {
+      background-color: $text-color;
+    }
+  }
+  @include breakpoints(mobile) {
+    & {
+      flex-direction: column;
+      img {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-left: 20px;
+      }
+      .box-body {
+        @include flex(column, center, flex-start);
+      }
+    }
+  }
+}
+.faq-container {
+  img {
+    height: 40vh;
+  }
+  .faq {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    width: 1000px;
+    margin: 0 auto;
+    h2 {
+      font-weight: bold;
+    }
+    .frq {
+      margin-top: 50px;
+      h3 {
+        font-weight: bold;
+      }
+      span {
+        color: #7071b1;
+        font-size: 20px;
+      }
+      p {
+        font-size: 18px;
+        max-width: 850px;
+      }
+      @include breakpoints(mobile) {
+        & {
+          p {
+            width: 300px;
+          }
+          span {
+            display: block;
+            width: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+.contact-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: hidden;
+  h2 {
+    font-weight: bold;
+  }
+  .contact-info {
+    text-align: center;
+    overflow: hidden;
+    span {
+      color: #7071b1;
+      font-size: 20px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+}
+.cartItem-Container {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 140px;
+  right: 50px;
+  @include flex(column, center, center);
+  max-width: 300px;
+  height: 320px;
+  padding: 10px;
+  background-color: #fff;
+  transition: $trans;
+  &.cartAdded {
+    display: flex;
+    opacity: 1;
+  }
+  .btn {
+    margin-top: 10px;
+    background-color: $side-color;
+    color: #fff;
+    width: 200px;
+    border-radius: 25px;
+    transition: $trans;
+    border: 1px solid $side-color;
+    &:hover {
+      border: 1px solid $side-color;
+      background-color: transparent;
+      color: $side-color;
+    }
+  }
+  .btntwo {
+    border: 1px solid $text-color;
+    background-color: $text-color;
+  }
+  .btn-three {
+    color: $side-color;
+    margin-top: 10px;
+    border-bottom: 1px solid $side-color;
+  }
+  .bi-x-lg {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    cursor: pointer;
+  }
+  span {
+    display: flex;
+    i {
+      margin-right: 5px;
+      font-size: 20px;
+    }
+  }
+  .item-detials {
+    @include flex(row, center, center);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    img {
+      width: 100px;
+    }
+    h3 {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+  }
+}
+.cartContainer {
+  @include flex(column, space-between, center);
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  .subTotal {
+    width: 1000px;
+    @include breakpoints(mobile) {
+      width: 300px;
+    }
+    @include flex(column, flex-end, flex-end);
+
+    .total {
+      @include flex(row, center, baseline);
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 10px;
+        color: $text-color;
+      }
+      span {
+        font-size: 24px;
+        color: rgb(102, 99, 99);
+      }
+    }
+    p {
+      max-width: 250px;
+      text-align: right;
+    }
+    .checkout {
+      width: 300px;
+      height: 50px;
+      border-radius: 40px;
+      background-color: $text-color;
+      color: #fff;
+      font-size: 20px;
+      border: 1px solid $text-color;
+      transition: $trans;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 50px;
+      &:hover {
+        border-color: $side-color;
+        color: $side-color;
+        background-color: transparent;
+      }
+    }
+    .paypal {
+      width: 300px;
+      height: 45px;
+      background-color: #f8bf04;
+    }
+  }
+  .cart-header {
+    width: 1000px;
+    @include breakpoints(mobile) {
+      width: 300px;
+    }
+    @include flex(row, space-between, center);
+    h2 {
+      color: $text-color;
+      font-weight: bold;
+    }
+    .shopBtn {
+      border: 1px solid #000;
+      padding: 4px 16px;
+      border-radius: 20px;
+      color: #000;
+      transition: $trans;
+
+      &:hover {
+        border-color: $side-color;
+        color: $side-color;
+      }
+    }
+  }
+  .cart-titles {
+    padding-top: 15px;
+    width: 1000px;
+    @include flex(row, space-between, center);
+    @include breakpoints(mobile) {
+      width: 300px;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: normal;
+      color: rgb(165, 164, 164);
+    }
+  }
+  .cartItem {
+    width: 1000px;
+    margin: 20px 0;
+    border-top: 1px solid rgba(95, 91, 91, 0.527);
+    border-bottom: 1px solid rgba(95, 91, 91, 0.527);
+    @include flex(row, space-between, center);
+    @include breakpoints(mobile) {
+      width: 300px;
+    }
+
+    img {
+      width: 120px;
+      padding: 10px;
+    }
+    .cart-body {
+      @include flex(row, center, center);
+      @include breakpoints(mobile) {
+        flex-direction: column;
+      }
+      .details {
+        width: 100px;
+        @include flex(column, center, baseline);
+        span {
+          text-align: start;
+          font-size: 16px;
+          &:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .cart-quantity {
+      @include flex(row, space-around, center);
+      width: 120px;
+      height: 35px;
+      border: 1px solid #000;
+      button {
+        font-size: 18px;
+      }
+      @include breakpoints(mobile) {
+        width: 50px;
+        height: 35px;
+      }
+    }
+    .q-c {
+      @include flex(row, center, center);
+      .cart-quantity {
+        margin-right: 10px;
+      }
+    }
+    .bi-x-lg {
+      border: 1px solid red;
+      padding: 2px 6px;
+      color: red;
+      cursor: pointer;
+      transition: $trans;
+      &:hover {
+        background-color: red;
+        color: #fff;
+      }
+    }
+  }
+}
+.find-container {
+  padding-bottom: 100px;
+  @include flex(column, center, center);
+  iframe {
+    width: 1500px;
+    height: 500px;
+  }
+  @include breakpoints(mobile) {
+    iframe {
+      width: 95%;
+      height: 500px;
+    }
+  }
+}
+.InformationPage {
+  position: relative;
+  width: 100%;
+  @include flex(column, center, center);
+  margin: 15px auto;
+  text-align: center;
+  .paymentHeader {
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      text-align: center;
+    }
+    .actions {
+      span {
+        &.active {
+          color: #0498f5;
+        }
+      }
+    }
+  }
+  @include breakpoints(mobile) {
+    & {
+      align-items: flex-start;
+      margin: 20px;
+    }
+    .username {
+      display: flex;
+      flex-direction: column;
+    }
+    .location {
+      display: flex;
+      flex-direction: column;
+    }
+    .paymentHeader {
+      h2 {
+        text-align: start;
+      }
+    }
+  }
+  .shippingForm {
+    @include flex(column, flex-start, flex-start);
+    input {
+      padding: 10px;
+      outline: none;
+      border: none;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 10px 10px;
+      &:hover,
+      &:focus {
+        border: 1px solid #000;
+      }
+    }
+    .two-w {
+      width: 400px;
+    }
+    .full-w {
+      width: 820px;
+    }
+    @include breakpoints(mobile) {
+      .two-w {
+        width: 300px;
+      }
+      .full-w {
+        width: 300px;
+      }
+    }
+  }
+  .checkBoxInfo {
+    @include flex(row, center, center);
+    .checkbox {
+      width: 25px;
+      height: 18px;
+      margin-bottom: 25px;
+    }
+  }
+  .submitBtns {
+    width: 840px;
+    @include flex(row, space-between, center);
+    button {
+      color: #0498f5;
+    }
+    .btn {
+      border-radius: 8px;
+      background-color: #0498f5;
+      color: #fff;
+      padding: 20px;
+      transition: $trans;
+      &:hover {
+        background-color: #064d79;
+      }
+    }
+  }
+  @include breakpoints(mobile) {
+    .submitBtns {
+      width: 350px;
+    }
+  }
+}
+.formError {
+  margin-left: 20px;
+  color: red;
+}
+.paymentSuccss {
+  width: 50%;
+  height: 100px;
+  @include postion;
+  background-color: $side-color;
+  border-radius: 10px;
+  color: #fff;
+  &.close {
+    display: none;
+  }
+  h2 {
+    text-align: center;
+    line-height: 100px;
+  }
+  .bi-x-lg {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+  }
+  @include breakpoints(mobile) {
+    & {
+      width: 300px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use "../mixins" as *;
+@use "../config" as *;
+
+.footer {
+  @include flex(column, center, center);
+  background-color: $text-color;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #fff;
+  transition: $trans;
+  .footer-links {
+    width: 100%;
+    @include flex(row, space-evenly, center);
+    border-bottom: 1px solid #fff;
+    padding-bottom: 30px;
+    .Flinks {
+      @include flex(column, center, flex-start);
+      a {
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+    }
+    i {
+      font-size: 100px;
+    }
+  }
+  .store-address {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    transition: $trans;
+    @include flex(row, space-evenly, center);
+    border-bottom: 1px solid #fff;
+    .address {
+      span {
+        margin-left: 15px;
+      }
+    }
+  }
+  .copyrights {
+    padding-top: 50px;
+    span {
+      @include flex(row, center, center);
+      font-size: 20px;
+      text-transform: uppercase;
+      div {
+        font-size: 30px;
+        margin-right: 5px;
+        margin-top: 5px;
+      }
+    }
+  }
+  @include breakpoints(mobile) {
+    .store-address {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        width: 300px;
+      }
+    }
+    .address {
+      margin-left: -18px;
+    }
+    .copyrights {
+      span {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        text-align: center;
+      }
+    }
+  }
+}

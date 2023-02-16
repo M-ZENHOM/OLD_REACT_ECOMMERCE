@@ -1,0 +1,230 @@
+@use "../mixins" as *;
+@use "../config" as *;
+header {
+  background-color: $header-color;
+  border-bottom: 1px solid $text-color;
+  nav {
+    @include flex(row, center, center);
+    background-color: $side-color;
+    padding: 5px;
+    color: #fff;
+    overflow-x: hidden;
+    marquee {
+      width: 100%;
+      span {
+        margin-left: 200px;
+      }
+    }
+  }
+  .links-container {
+    height: 10vh;
+    transition: 0.5s;
+    @include flex(row, space-around, center);
+    .burgers-btns {
+      display: none;
+      width: 30px;
+      z-index: 101;
+      transition: $trans;
+      &.active span:first-child {
+        transform: translateY(9px) rotate(50deg);
+      }
+      &.active span:last-child {
+        transform: rotate(-410deg);
+      }
+      & span {
+        display: block;
+        height: 3px;
+        margin-bottom: 6px;
+        background-color: $text-color;
+        transition: $trans;
+      }
+      @include breakpoints(mobile) {
+        & {
+          display: block;
+        }
+      }
+    }
+    .right-container {
+      @include flex(row, center, center);
+      .logo {
+        font: {
+          size: 30px;
+          weight: 800;
+        }
+        a {
+          color: $text-color;
+        }
+      }
+      .links {
+        a {
+          position: relative;
+          margin-left: 100px;
+          text-transform: uppercase;
+          font: {
+            size: 20px;
+          }
+          color: $text-light;
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            transition: $trans;
+          }
+          &:hover::before,
+          &.active::before {
+            width: 100%;
+          }
+        }
+        @include breakpoints(mobile) {
+          & {
+            z-index: 999;
+            opacity: 0;
+            position: absolute;
+            top: 100px;
+            left: -100%;
+            @include flex(column, flex-start, flex-start);
+            background-color: #ede7da;
+            width: 100%;
+            height: 87vh;
+            min-height: 200px;
+            padding: 10px;
+            transition: $trans;
+            border-bottom: 1px solid $text-color;
+            padding-top: 20px;
+            &.menuAnimation {
+              left: 0;
+              opacity: 1;
+            }
+            a {
+              color: $text-light;
+              margin: 0;
+              margin-bottom: 30px;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+    .icons {
+      i {
+        margin-left: 10px;
+        font: {
+          size: 20px;
+          weight: bold;
+        }
+        color: #000;
+      }
+      .cartBtn {
+        position: relative;
+      }
+      .CartActive {
+        display: block;
+        opacity: 1;
+        position: absolute;
+        top: 4px;
+        left: 6px;
+        width: 10px;
+        height: 10px;
+        background-color: $side-color;
+        border-radius: 50%;
+        transition: $trans;
+      }
+      .searchBtn {
+        cursor: pointer;
+      }
+      .search-bar {
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 20vh;
+        background-color: #fff;
+        z-index: 555;
+        transition: $trans;
+        opacity: 0;
+        &.active-search {
+          top: 23%;
+          opacity: 1;
+        }
+        .input-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 80px;
+          input {
+            position: relative;
+            min-width: 300px;
+            width: 35%;
+            padding: 10px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid $text-color;
+            &::placeholder {
+              font-size: 30px;
+              color: $text-color;
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+          }
+          .bi-search {
+            position: absolute;
+            top: 45%;
+            right: 33%;
+            cursor: pointer;
+            font-size: 20px;
+            @include breakpoints(mobile) {
+              & {
+                right: 10%;
+              }
+            }
+          }
+          .bi-x-lg {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.brand-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 3vh;
+  width: 100%;
+  animation: brand 20s 2s linear infinite both;
+  span {
+    white-space: nowrap;
+    margin-left: 30px;
+  }
+  @include breakpoints(mobile) {
+    animation: brandMobile 20s 2s linear infinite both;
+  }
+}
+
+@keyframes brand {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes brandMobile {
+  from {
+    transform: translateX(160%);
+  }
+  to {
+    transform: translateX(-160%);
+  }
+}
